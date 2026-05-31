@@ -32,14 +32,6 @@ img { max-width: 100%; display: block; }
   0% { opacity: 0; transform: translateY(40px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-@keyframes fadeInLeft {
-  0% { opacity: 0; transform: translateX(-40px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-@keyframes fadeInRight {
-  0% { opacity: 0; transform: translateX(40px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
 @keyframes pulseGlow {
   0% { box-shadow: 0 0 0 0 rgba(58,167,109,0.5); }
   70% { box-shadow: 0 0 0 15px rgba(58,167,109,0); }
@@ -49,10 +41,6 @@ img { max-width: 100%; display: block; }
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
-}
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
 }
 .reveal {
   opacity: 0;
@@ -111,7 +99,7 @@ img { max-width: 100%; display: block; }
 .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; display: none; }
 .overlay.active { display: block; }
 
-/* ========== HERO SECTION (GAME CHANGER) ========== */
+/* Hero Section */
 .hero {
   min-height: 100vh;
   background: linear-gradient(115deg, rgba(20,45,33,0.88), rgba(30,61,47,0.85)), 
@@ -243,7 +231,7 @@ img { max-width: 100%; display: block; }
 }
 .review-stars { color: #ffb83b; font-size: 1.5rem; letter-spacing: 5px; margin-bottom: 15px; }
 
-/* Services Cards - Glassmorphism */
+/* Services Cards */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -311,33 +299,104 @@ img { max-width: 100%; display: block; }
 .why-item i { font-size: 45px; color: #3aa76d; margin-bottom: 15px; }
 .why-item h4 { font-size: 1.2rem; margin-bottom: 10px; }
 
-/* Location Section */
-.location-grid {
+/* LOCATION SECTION - SIDE BY SIDE ON LAPTOP, STACKED ON MOBILE (map top) */
+.location-wrapper {
   display: flex;
-  gap: 35px;
   flex-wrap: wrap;
+  gap: 35px;
+  flex-direction: column; /* default: stacked on mobile */
 }
-.map-card {
+.map-card, .contact-card {
   flex: 1;
+  width: 100%;
   background: white;
   border-radius: 40px;
   overflow: hidden;
   box-shadow: 0 25px 45px -15px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease;
 }
-.map-card iframe { width: 100%; height: 350px; }
+.map-card iframe { 
+  width: 100%; 
+  height: 400px; 
+  display: block;
+  border: none;
+}
 .contact-card {
-  flex: 1;
-  background: white;
-  border-radius: 40px;
-  padding: 35px;
-  box-shadow: 0 25px 45px -15px rgba(0,0,0,0.12);
+  padding: 35px 30px;
 }
-.contact-detail { display: flex; align-items: center; gap: 15px; padding: 15px 0; border-bottom: 1px solid #e0ece5; }
-.contact-detail i { width: 40px; height: 40px; background: #e8f5ed; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3aa76d; font-size: 1.2rem; }
-.btn-call, .btn-whatsapp { display: inline-block; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 10px 5px; transition: 0.3s; }
+.map-card:hover, .contact-card:hover {
+  transform: translateY(-5px);
+}
+.btn-get-directions {
+  background: #2c5a45;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0 10px;
+}
+.btn-get-directions:hover {
+  background: #1e3d2f;
+  transform: translateY(-3px);
+}
+.contact-detail { 
+  display: flex; 
+  align-items: flex-start; 
+  gap: 18px; 
+  padding: 18px 0; 
+  border-bottom: 1px solid #e0ece5; 
+}
+.contact-detail i { 
+  width: 44px; 
+  height: 44px; 
+  background: #e8f5ed; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: #3aa76d; 
+  font-size: 1.3rem; 
+  flex-shrink: 0;
+}
+.btn-call, .btn-whatsapp { 
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px; 
+  border-radius: 50px; 
+  text-decoration: none; 
+  font-weight: 600; 
+  margin: 10px 8px 0 0; 
+  transition: 0.3s; 
+}
 .btn-call { background: #1e3d2f; color: white; }
 .btn-whatsapp { background: #25D366; color: white; }
 .btn-call:hover, .btn-whatsapp:hover { transform: translateY(-3px); filter: brightness(1.05); }
+.home-visit-banner {
+  margin-top: 28px;
+  background: #e8f5ed;
+  padding: 16px 20px;
+  border-radius: 40px;
+  text-align: center;
+  font-weight: 600;
+  color: #1e3d2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.home-visit-banner i {
+  font-size: 1.6rem;
+  color: #3aa76d;
+}
 
 /* Strong CTA Section */
 .cta-section {
@@ -396,13 +455,52 @@ footer {
 .social-icons a { background: #2a5542; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
 .social-icons a:hover { background: #3aa76d; transform: translateY(-5px); }
 
+/* ========== RESPONSIVE: LAPTOP SIDE-BY-SIDE, MOBILE STACKED ========== */
+@media (min-width: 851px) {
+  .location-wrapper {
+    flex-direction: row;   /* agal bagal (side by side) on laptop/desktop */
+    align-items: stretch;
+  }
+  .map-card, .contact-card {
+    width: calc(50% - 17.5px); /* equal width with gap */
+    flex: 1;
+  }
+  .map-card iframe {
+    height: 480px; /* taller on desktop */
+  }
+}
+
 @media (max-width: 850px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .hero h1 { font-size: 2.2rem; }
-  .section { padding: 60px 16px; }
-  .doctor-card { flex-direction: column; text-align: center; }
+  .section { padding: 60px 20px; }
+  .doctor-card { flex-direction: column; text-align: center; padding: 35px 25px; }
   .cta-section { padding: 40px 20px; margin: 20px 16px; }
+  .section h2 { font-size: 2rem; }
+  .map-card iframe { height: 280px; }
+  .contact-card { padding: 25px 20px; }
+  .btn-call, .btn-whatsapp { padding: 10px 20px; font-size: 0.9rem; }
+  .contact-detail { gap: 12px; }
+  .hero-stats { gap: 15px; }
+  .hero-stat { padding: 6px 16px; font-size: 0.85rem; }
+  .trust-card { width: 180px; padding: 20px 15px; }
+  .btn-get-directions { padding: 10px 20px; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.8rem; }
+  .btn-hero { padding: 12px 28px; font-size: 1rem; }
+  .section h2 { font-size: 1.8rem; }
+  .service-card, .why-item { padding: 25px 18px; }
+  .reviews-preview { padding: 25px 18px; }
+  .trust-card { width: 150px; padding: 15px 10px; }
+  .trust-card .big-number { font-size: 1.6rem; }
+  .doctor-img { width: 200px; height: 200px; }
+  .contact-detail { flex-direction: column; align-items: center; text-align: center; }
+  .contact-detail i { margin-bottom: 5px; }
+  .btn-call, .btn-whatsapp { width: 100%; justify-content: center; margin: 8px 0; }
+  .home-visit-banner { flex-direction: column; text-align: center; }
 }
 </style>
 </head>
@@ -442,8 +540,7 @@ footer {
   </div>
   <div class="reviews-preview reveal">
     <div class="review-stars">★★★★★</div>
-    <p style="font-size:1.1rem; font-weight:500;">"Had a great Hijama session—felt light, relaxed, and more energetic afterward. The process was smooth, hygienic, and very effective. Highly recommend it for detox and overall wellness
-You must visit 😇."</p>
+    <p style="font-size:1.1rem; font-weight:500;">"Had a great Hijama session—felt light, relaxed, and more energetic afterward. The process was smooth, hygienic, and very effective. Highly recommend it for detox and overall wellness. You must visit 😇."</p>
     <p style="margin-top:10px;">— Tushar (Verified Patient)</p>
   </div>
 </section>
@@ -465,7 +562,7 @@ You must visit 😇."</p>
 <section class="section" id="doctor">
   <h2>Meet Your Expert Physiotherapist</h2>
   <div class="doctor-card reveal">
-    <img class="doctor-img" src="dr prince.png" loading="lazy" alt="Dr. Prince">
+    <img class="doctor-img" src="dr prince.png" loading="lazy" alt="Dr. Prince" onerror="this.src='https://placehold.co/300x300?text=Dr.Prince'">
     <div><h2>Dr. Prince <span style="font-size:1rem;">(PT)</span></h2><div><span class="cert-badge"><i class="fas fa-certificate"></i> Certified Orthopedic Physio</span><span class="cert-badge" style="background:#ffb74d; color:#1e3d2f;"><i class="fas fa-truck-medical"></i> Home Visit Expert</span></div><p style="margin:20px 0; line-height:1.6;">With over 3+ years of clinical experience, Dr. Prince has helped 1000+ patients recover from chronic pain, sports injuries, and post-surgical conditions. His patient-centric approach combines manual therapy, dry needling, and personalized exercise protocols for faster recovery.</p><p><i class="fas fa-stethoscope"></i> Specialized in: Orthopedic, Sports & Neuro Rehab</p><p><i class="fas fa-phone"></i> +91 9654300103</p></div>
   </div>
 </section>
@@ -483,20 +580,22 @@ You must visit 😇."</p>
   </div>
 </section>
 
-<!-- Location + Contact Section with FULL ADDRESS updated -->
+<!-- LOCATION SECTION: LAPTOP = SIDE BY SIDE (MAP LEFT, CONTACT RIGHT), MOBILE = MAP TOP, CONTACT BELOW -->
 <section class="section" id="location">
   <h2>Visit Our Clinic</h2>
-  <div class="location-grid">
+  <div class="location-wrapper">
+    <!-- Map Card - First (always on top for mobile, left for laptop) -->
     <div class="map-card reveal">
-      <!-- Google Maps iframe with exact full address -->
       <iframe src="https://maps.google.com/maps?q=Shop%20No%207%2C%20Eicher%20Chowk%2C%20near%20juta%20market%2C%20Saran%2C%20Press%20Colony%2C%20Faridabad%2C%20Haryana%20121005&output=embed&z=17" loading="lazy" allowfullscreen></iframe>
-      <div style="padding:15px; text-align:center;">
-        <button class="btn-get-directions" onclick="window.open('https://maps.app.goo.gl/QiHUMxftm6ePwZd49')" style="background:#2c5a45; color:white; border:none; padding:10px 20px; border-radius:40px; cursor:pointer;"><i class="fas fa-directions"></i> Get Directions</button>
+      <div style="padding:15px 20px 20px 20px; text-align:center;">
+        <button class="btn-get-directions" onclick="window.open('https://maps.app.goo.gl/QiHUMxftm6ePwZd49')"><i class="fas fa-directions"></i> Get Directions</button>
       </div>
     </div>
+
+    <!-- Contact Card - Second (below map on mobile, right side on laptop) -->
     <div class="contact-card reveal">
-      <h3 style="margin-bottom:20px;">Get in Touch</h3>
-      <!-- Full address as provided -->
+      <h3 style="margin-bottom:20px; font-size:1.8rem;"><i class="fas fa-address-card"></i> Get in Touch</h3>
+      
       <div class="contact-detail">
         <i class="fas fa-map-marker-alt"></i>
         <div>
@@ -505,16 +604,21 @@ You must visit 😇."</p>
           Saran, Press Colony, Faridabad, Haryana - 121005
         </div>
       </div>
+      
       <div class="contact-detail">
         <i class="fas fa-phone-alt"></i>
         <div><strong>Call Us</strong><br>+91 96543 00103</div>
       </div>
-      <div style="margin-top:25px;">
+      
+      <div style="margin-top:20px; display: flex; flex-wrap: wrap; gap: 12px;">
         <a href="tel:+919654300103" class="btn-call"><i class="fas fa-phone"></i> Call Now</a>
         <a href="https://wa.me/919654300103" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       </div>
-      <div style="margin-top:20px; background:#e8f5ed; padding:12px; border-radius:30px; text-align:center;">
-        <i class="fas fa-wheelchair"></i> Home Visit Available in Faridabad & nearby areas
+      
+      <!-- Home Visit Banner exactly as requested below contact details -->
+      <div class="home-visit-banner">
+        <i class="fas fa-wheelchair"></i>
+        <span>🏠 Home Visit Available in Faridabad & nearby areas</span>
       </div>
     </div>
   </div>
@@ -541,7 +645,7 @@ You must visit 😇."</p>
       </div>
     </div>
     <div class="footer-col"><h4>Quick Links</h4><a href="#home">Home</a><a href="#services">Services</a><a href="#doctor">Doctor</a><a href="#whyus">Why Choose Us</a><a href="#location">Contact</a></div>
-    <div class="footer-col"><h4>Working Hours</h4><p>Mon - Sat: 10:00 AM - 9:00 PM</p><p>Sunday: Emergency Only</p><p>Home Visit</p></div>
+    <div class="footer-col"><h4>Working Hours</h4><p>Mon - Sat: 10:00 AM - 9:00 PM</p><p>Sunday: Emergency Only</p><p>Home Visit Available</p></div>
   </div>
   <div style="text-align:center; margin-top:40px; padding-top:20px; border-top:1px solid #2a5542;">© 2025 Aarogya Jeevan Physio Care | Advanced Physiotherapy Clinic</div>
 </footer>
