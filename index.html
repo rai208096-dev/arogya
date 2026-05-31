@@ -581,18 +581,27 @@ footer {
 </section>
 
 <!-- LOCATION SECTION: LAPTOP = SIDE BY SIDE (MAP LEFT, CONTACT RIGHT), MOBILE = MAP TOP, CONTACT BELOW -->
+<!-- Updated with exact coordinates and directions link -->
 <section class="section" id="location">
   <h2>Visit Our Clinic</h2>
   <div class="location-wrapper">
-    <!-- Map Card - First (always on top for mobile, left for laptop) -->
+    <!-- Map Card - using exact coordinates -->
     <div class="map-card reveal">
-      <iframe src="https://maps.google.com/maps?q=Shop%20No%207%2C%20Eicher%20Chowk%2C%20near%20juta%20market%2C%20Saran%2C%20Press%20Colony%2C%20Faridabad%2C%20Haryana%20121005&output=embed&z=17" loading="lazy" allowfullscreen></iframe>
+      <iframe 
+        src="https://maps.google.com/maps?q=28.37127882305087,77.28904961599953&z=17&output=embed" 
+        loading="lazy" 
+        allowfullscreen>
+      </iframe>
       <div style="padding:15px 20px 20px 20px; text-align:center;">
-        <button class="btn-get-directions" onclick="window.open('https://maps.app.goo.gl/QiHUMxftm6ePwZd49')"><i class="fas fa-directions"></i> Get Directions</button>
+        <button 
+          class="btn-get-directions" 
+          onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=28.37127882305087,77.28904961599953', '_blank')">
+          <i class="fas fa-directions"></i> Get Directions
+        </button>
       </div>
     </div>
 
-    <!-- Contact Card - Second (below map on mobile, right side on laptop) -->
+    <!-- Contact Card - unchanged address details -->
     <div class="contact-card reveal">
       <h3 style="margin-bottom:20px; font-size:1.8rem;"><i class="fas fa-address-card"></i> Get in Touch</h3>
       
@@ -615,7 +624,7 @@ footer {
         <a href="https://wa.me/919654300103" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       </div>
       
-      <!-- Home Visit Banner exactly as requested below contact details -->
+      <!-- Home Visit Banner -->
       <div class="home-visit-banner">
         <i class="fas fa-wheelchair"></i>
         <span>🏠 Home Visit Available in Faridabad & nearby areas</span>
